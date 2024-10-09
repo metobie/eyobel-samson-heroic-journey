@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
-import ScrollArrow from '../components/ScrollArrow';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -92,23 +91,10 @@ const Footer = () => (
 );
 
 const Index = () => {
-  const [currentHero, setCurrentHero] = useState(0);
-  const heroRefs = [useRef(null), useRef(null), useRef(null)];
+  const secondHeroRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const currentHeroIndex = Math.round(scrollPosition / windowHeight);
-      setCurrentHero(currentHeroIndex);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToHero = (index) => {
-    heroRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSecondHero = () => {
+    secondHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const createEmailLink = (subject, body) => {
@@ -144,19 +130,16 @@ Med vänliga hälsningar,
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div ref={heroRefs[0]}>
-        <Hero 
-          imageSrc="https://i.imgur.com/ImgujTd.png"
-          logoSrc="https://i.imgur.com/0LHKV77.png"
-          description="DJ och Inspirerande Föreläsare"
-          buttonText="Lär känna mig"
-          buttonAction={() => scrollToHero(1)}
-          isFirst={true}
-        />
-        {currentHero === 0 && <ScrollArrow onClick={() => scrollToHero(1)} />}
-      </div>
+      <Hero 
+        imageSrc="https://i.imgur.com/ImgujTd.png"
+        logoSrc="https://i.imgur.com/0LHKV77.png"
+        description="DJ och Inspirerande Föreläsare"
+        buttonText="Lär känna mig"
+        buttonAction={scrollToSecondHero}
+        isFirst={true}
+      />
 
-      <div ref={heroRefs[1]}>
+      <div ref={secondHeroRef}>
         <Hero 
           imageSrc="https://i.imgur.com/P3WBicv.jpeg"
           title="Tackla Dina Drömmar"
@@ -165,21 +148,16 @@ Med vänliga hälsningar,
           buttonAction={bookLecture}
           delay={true}
         />
-        <ScrollArrow direction="up" onClick={() => scrollToHero(0)} />
-        <ScrollArrow direction="down" onClick={() => scrollToHero(2)} />
       </div>
 
-      <div ref={heroRefs[2]}>
-        <Hero 
-          imageSrc="https://i.imgur.com/etmrGsZ.png"
-          title="Upplev Musiken"
-          description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
-          buttonText="Boka DJ-tjänster"
-          buttonAction={bookDJServices}
-          delay={true}
-        />
-        {currentHero === 2 && <ScrollArrow direction="up" onClick={() => scrollToHero(1)} />}
-      </div>
+      <Hero 
+        imageSrc="https://i.imgur.com/etmrGsZ.png"
+        title="Upplev Musiken"
+        description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
+        buttonText="Boka DJ-tjänster"
+        buttonAction={bookDJServices}
+        delay={true}
+      />
 
       <Footer />
     </div>
