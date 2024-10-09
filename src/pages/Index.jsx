@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
@@ -102,19 +102,12 @@ const Footer = () => (
 );
 
 const Index = () => {
+  const firstHeroRef = useRef(null);
   const secondHeroRef = useRef(null);
   const thirdHeroRef = useRef(null);
 
-  const scrollToFirstHero = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToSecondHero = () => {
-    secondHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToThirdHero = () => {
-    thirdHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToHero = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const createEmailLink = (subject, body) => {
@@ -150,17 +143,19 @@ Med vänliga hälsningar,
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Hero 
-        imageSrc="https://i.imgur.com/ImgujTd.png"
-        logoSrc="https://i.imgur.com/0LHKV77.png"
-        description="DJ och Inspirerande Föreläsare"
-        buttonText="Lär känna mig"
-        buttonAction={scrollToSecondHero}
-        isFirst={true}
-        onScrollDown={scrollToSecondHero}
-      />
+      <div ref={firstHeroRef} className="relative">
+        <Hero 
+          imageSrc="https://i.imgur.com/ImgujTd.png"
+          logoSrc="https://i.imgur.com/0LHKV77.png"
+          description="DJ och Inspirerande Föreläsare"
+          buttonText="Lär känna mig"
+          buttonAction={() => scrollToHero(secondHeroRef)}
+          isFirst={true}
+        />
+        <ScrollArrow direction="down" onClick={() => scrollToHero(secondHeroRef)} />
+      </div>
 
-      <div ref={secondHeroRef}>
+      <div ref={secondHeroRef} className="relative">
         <Hero 
           imageSrc="https://i.imgur.com/P3WBicv.jpeg"
           title="Tackla Dina Drömmar"
@@ -168,11 +163,11 @@ Med vänliga hälsningar,
           buttonText="Boka föreläsning"
           buttonAction={bookLecture}
         />
-        <ScrollArrow direction="up" onClick={scrollToFirstHero} />
-        <ScrollArrow direction="down" onClick={scrollToThirdHero} />
+        <ScrollArrow direction="up" onClick={() => scrollToHero(firstHeroRef)} className="top-4" />
+        <ScrollArrow direction="down" onClick={() => scrollToHero(thirdHeroRef)} />
       </div>
 
-      <div ref={thirdHeroRef}>
+      <div ref={thirdHeroRef} className="relative">
         <Hero 
           imageSrc="https://i.imgur.com/etmrGsZ.png"
           title="Upplev Musiken"
@@ -180,7 +175,7 @@ Med vänliga hälsningar,
           buttonText="Boka DJ-tjänster"
           buttonAction={bookDJServices}
         />
-        <ScrollArrow direction="up" onClick={scrollToSecondHero} />
+        <ScrollArrow direction="up" onClick={() => scrollToHero(secondHeroRef)} className="top-4" />
       </div>
 
       <Footer />
