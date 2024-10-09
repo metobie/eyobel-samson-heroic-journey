@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
+import ScrollArrow from '../components/ScrollArrow';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -9,7 +10,7 @@ const fadeInUp = {
   transition: { duration: 1.8, ease: "easeOut" }
 };
 
-const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, delay = false, isFirst = false }) => {
+const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, delay = false, isFirst = false, onScrollDown }) => {
   const contentRef = useRef(null);
   const isInView = useInView(contentRef, { amount: delay ? 0.7 : 0, once: true });
 
@@ -73,6 +74,7 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
           {buttonText}
         </Button>
       </motion.div>
+      {isFirst && <ScrollArrow direction="down" onClick={onScrollDown} />}
     </section>
   );
 };
@@ -137,6 +139,7 @@ Med vänliga hälsningar,
         buttonText="Lär känna mig"
         buttonAction={scrollToSecondHero}
         isFirst={true}
+        onScrollDown={scrollToSecondHero}
       />
 
       <div ref={secondHeroRef}>
