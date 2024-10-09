@@ -75,8 +75,21 @@ const Index = () => {
   };
 
   const bookLecture = () => {
-    const subject = "Bokning av föreläsning";
-    const body = "Hej Eyobel,\n\nJag är intresserad av att boka dig för en föreläsning. Kan du ge mig mer information om dina tillgängliga datum och priser?\n\nMed vänliga hälsningar,\n[Ditt namn]";
+    const subject = "Förfrågan om föreläsning";
+    const body = `Hej Eyobel,
+
+Jag är intresserad av att boka dig för en föreläsning och skulle gärna vilja veta mer om de olika typer av föreläsningar du erbjuder. Kan du berätta mer om:
+
+1. Vilka ämnen du föreläser om?
+2. Vilka längder på föreläsningar som finns tillgängliga?
+3. Hur innehållet skiljer sig mellan de olika föreläsningarna?
+
+Dessutom skulle jag uppskatta information om dina tillgängliga datum och priser.
+
+Tack på förhand!
+
+Med vänliga hälsningar,
+[Ditt namn]`;
     window.location.href = createEmailLink(subject, body);
   };
 
