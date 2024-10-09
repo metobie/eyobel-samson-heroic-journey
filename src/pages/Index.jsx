@@ -5,12 +5,27 @@ import { motion, useInView } from 'framer-motion';
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 1.2, ease: "easeOut" }
+  transition: { duration: 1.8, ease: "easeOut" }
 };
 
-const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, delay = false }) => {
+const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, delay = false, isFirst = false }) => {
   const contentRef = useRef(null);
   const isInView = useInView(contentRef, { amount: delay ? 0.7 : 0, once: true });
+
+  const firstHeroVariants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 2.5,
+        ease: "easeOut",
+        delay: 0.5
+      }
+    }
+  };
+
+  const variants = isFirst ? firstHeroVariants : fadeInUp;
 
   return (
     <section className="relative h-screen flex items-center justify-center">
@@ -27,7 +42,7 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
         className="relative z-10 text-center px-4 max-w-4xl mx-auto"
         initial="initial"
         animate={isInView ? "animate" : "initial"}
-        variants={fadeInUp}
+        variants={variants}
       >
         {logoSrc ? (
           <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-lg" />
@@ -61,6 +76,7 @@ const Index = () => {
         description="DJ och Inspirerande Föreläsare"
         buttonText="Lär känna mig"
         buttonAction={scrollToSecondHero}
+        isFirst={true}
       />
 
       <div ref={secondHeroRef}>
