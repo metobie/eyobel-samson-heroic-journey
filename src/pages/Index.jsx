@@ -21,7 +21,8 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc 
     <motion.div 
       className="relative z-10 text-center px-4 max-w-4xl mx-auto"
       initial="initial"
-      animate="animate"
+      whileInView="animate"
+      viewport={{ once: true }}
       variants={fadeInUp}
     >
       {logoSrc ? (
