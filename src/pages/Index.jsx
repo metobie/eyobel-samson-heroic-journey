@@ -80,12 +80,12 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
 };
 
 const Footer = () => (
-  <div className="fixed bottom-4 right-4 z-50">
+  <div className="fixed bottom-4 left-4 md:right-4 md:left-auto z-50">
     <a 
       href="https://renew-io.se" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="text-white text-sm hover:text-gray-300 transition-colors opacity-70 hover:opacity-100"
+      className="text-white text-xs md:text-sm hover:text-gray-300 transition-colors opacity-70 hover:opacity-100"
     >
       Designed by Renew I/O
     </a>
