@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from 'framer-motion';
+import { Phone, Mail } from 'lucide-react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -45,11 +46,23 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
         variants={variants}
       >
         {logoSrc ? (
-          <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-lg" />
+          <>
+            <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-lg" />
+            <p className="text-lg md:text-xl mb-4 text-white">{description}</p>
+            <div className="flex justify-center items-center space-x-6 mb-8">
+              <a href="tel:+46700131356" className="flex items-center text-white hover:text-gray-300">
+                <Phone size={20} className="mr-2" />
+                <span className="text-sm md:text-base">+46 70-013 13 56</span>
+              </a>
+              <a href="mailto:bokning@eyoo.se" className="flex items-center text-white hover:text-gray-300">
+                <Mail size={20} className="mr-2" />
+                <span className="text-sm md:text-base">bokning@eyoo.se</span>
+              </a>
+            </div>
+          </>
         ) : (
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{title}</h2>
         )}
-        <p className="text-lg md:text-xl mb-8 text-white">{description}</p>
         <Button 
           className={isFirst ? "bg-white text-black hover:bg-gray-200" : "bg-transparent border border-white hover:bg-white hover:text-black"}
           onClick={buttonAction}
