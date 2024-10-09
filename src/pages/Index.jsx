@@ -68,6 +68,24 @@ const Index = () => {
     secondHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const createEmailLink = (subject, body) => {
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+    return `mailto:bokning@eyoo.se?subject=${encodedSubject}&body=${encodedBody}`;
+  };
+
+  const bookLecture = () => {
+    const subject = "Bokning av föreläsning";
+    const body = "Hej Eyobel,\n\nJag är intresserad av att boka dig för en föreläsning. Kan du ge mig mer information om dina tillgängliga datum och priser?\n\nMed vänliga hälsningar,\n[Ditt namn]";
+    window.location.href = createEmailLink(subject, body);
+  };
+
+  const bookDJServices = () => {
+    const subject = "Bokning av DJ-tjänster";
+    const body = "Hej Eyobel,\n\nJag skulle vilja boka dina DJ-tjänster för ett event. Kan du ge mig mer information om dina tillgängliga datum och priser?\n\nMed vänliga hälsningar,\n[Ditt namn]";
+    window.location.href = createEmailLink(subject, body);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Hero 
@@ -85,7 +103,7 @@ const Index = () => {
           title="Tackla Dina Drömmar"
           description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att nå dina mål."
           buttonText="Boka föreläsning"
-          buttonAction={() => console.log('Boka föreläsning clicked')}
+          buttonAction={bookLecture}
           delay={true}
         />
       </div>
@@ -95,7 +113,7 @@ const Index = () => {
         title="Upplev Musiken"
         description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
         buttonText="Boka DJ-tjänster"
-        buttonAction={() => console.log('Boka DJ-tjänster clicked')}
+        buttonAction={bookDJServices}
         delay={true}
       />
     </div>
