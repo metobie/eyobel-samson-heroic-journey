@@ -74,6 +74,19 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
   );
 };
 
+const Footer = () => (
+  <div className="fixed bottom-4 right-4 z-50">
+    <a 
+      href="https://renew-io.se" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="text-white text-sm hover:text-gray-300 transition-colors"
+    >
+      Designed by Renew I/O
+    </a>
+  </div>
+);
+
 const Index = () => {
   const secondHeroRef = useRef(null);
 
@@ -142,6 +155,8 @@ Med vänliga hälsningar,
         buttonAction={bookDJServices}
         delay={true}
       />
+
+      <Footer />
     </div>
   );
 };
