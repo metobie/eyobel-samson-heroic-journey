@@ -8,7 +8,7 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-const Hero = ({ imageSrc, title, description, buttonText, buttonAction }) => (
+const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc }) => (
   <section className="relative h-screen flex items-center justify-center">
     <div className="absolute inset-0">
       <img 
@@ -25,7 +25,11 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction }) => (
       viewport={{ once: true }}
       variants={fadeInUp}
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{title}</h2>
+      {logoSrc ? (
+        <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-xs" />
+      ) : (
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{title}</h2>
+      )}
       <p className="text-lg md:text-xl mb-8 text-white">{description}</p>
       <Button 
         className={buttonText === "Boka DJ-tjänster" ? "bg-transparent border border-white hover:bg-white hover:text-black" : "bg-white text-black hover:bg-gray-200"}
@@ -42,7 +46,7 @@ const Index = () => {
     <div className="min-h-screen bg-black text-white">
       <Hero 
         imageSrc="https://i.imgur.com/ImgujTd.png"
-        title="Eyobel Samson"
+        logoSrc="https://i.imgur.com/0LHKV77.png"
         description="DJ och Inspirerande Föreläsare"
         buttonText="Lär känna mig"
         buttonAction={() => console.log('Lär känna mig clicked')}
