@@ -85,7 +85,7 @@ const Footer = () => (
       href="https://renew-io.se" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="text-white text-sm hover:text-gray-300 transition-colors"
+      className="text-white text-sm hover:text-gray-300 transition-colors opacity-70 hover:opacity-100"
     >
       Designed by Renew I/O
     </a>
