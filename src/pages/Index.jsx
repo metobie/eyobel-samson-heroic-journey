@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
 import ScrollArrow from '../components/ScrollArrow';
 
@@ -10,9 +10,18 @@ const fadeInUp = {
   transition: { duration: 1.8, ease: "easeOut" }
 };
 
-const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, delay = false, isFirst = false, onScrollDown }) => {
+const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc, isFirst = false, onScrollDown }) => {
   const contentRef = useRef(null);
-  const isInView = useInView(contentRef, { amount: delay ? 0.7 : 0, once: true });
+  const controls = useAnimation();
+  const isInView = useInView(contentRef, { amount: 0.3 });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("animate");
+    } else {
+      controls.start("initial");
+    }
+  }, [isInView, controls]);
 
   const firstHeroVariants = {
     initial: { opacity: 0, y: 30 },
@@ -43,7 +52,7 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
         ref={contentRef}
         className="relative z-10 text-center px-4 max-w-4xl mx-auto"
         initial="initial"
-        animate={isInView ? "animate" : "initial"}
+        animate={controls}
         variants={variants}
       >
         {logoSrc ? (
@@ -151,27 +160,25 @@ Med vänliga hälsningar,
         onScrollDown={scrollToSecondHero}
       />
 
-      <div ref={secondHeroRef} className="relative">
+      <div ref={secondHeroRef}>
         <Hero 
           imageSrc="https://i.imgur.com/P3WBicv.jpeg"
           title="Tackla Dina Drömmar"
           description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att nå dina mål."
           buttonText="Boka föreläsning"
           buttonAction={bookLecture}
-          delay={true}
         />
         <ScrollArrow direction="up" onClick={scrollToFirstHero} />
         <ScrollArrow direction="down" onClick={scrollToThirdHero} />
       </div>
 
-      <div ref={thirdHeroRef} className="relative">
+      <div ref={thirdHeroRef}>
         <Hero 
           imageSrc="https://i.imgur.com/etmrGsZ.png"
           title="Upplev Musiken"
           description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
           buttonText="Boka DJ-tjänster"
           buttonAction={bookDJServices}
-          delay={true}
         />
         <ScrollArrow direction="up" onClick={scrollToSecondHero} />
       </div>
