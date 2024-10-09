@@ -62,7 +62,7 @@ const Index = () => {
         <Hero 
           imageSrc="https://i.imgur.com/P3WBicv.jpeg"
           title="Tackla Dina Drömmar"
-          description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att övervinna hinder och nå dina mål."
+          description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att nå dina mål."
           buttonText="Boka föreläsning"
           buttonAction={() => console.log('Boka föreläsning clicked')}
         />
