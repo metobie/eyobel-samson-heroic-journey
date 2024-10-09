@@ -51,7 +51,7 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc,
         )}
         <p className="text-lg md:text-xl mb-8 text-white">{description}</p>
         <Button 
-          className="bg-transparent border border-white hover:bg-white hover:text-black"
+          className={isFirst ? "" : "bg-transparent border border-white hover:bg-white hover:text-black"}
           onClick={buttonAction}
         >
           {buttonText}
