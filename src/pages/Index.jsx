@@ -26,7 +26,7 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc 
       variants={fadeInUp}
     >
       {logoSrc ? (
-        <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-xs" />
+        <img src={logoSrc} alt="Logo" className="mx-auto mb-6 max-w-sm" />
       ) : (
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{title}</h2>
       )}
