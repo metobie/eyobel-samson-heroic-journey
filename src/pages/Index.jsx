@@ -10,12 +10,13 @@ const fadeInUp = {
 
 const Hero = ({ imageSrc, title, description, buttonText, buttonAction }) => (
   <section className="relative h-screen flex items-center justify-center">
-    <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/80">
+    <div className="absolute inset-0">
       <img 
         src={imageSrc} 
         alt={title} 
         className="w-full h-full object-cover"
       />
+      <div className="absolute inset-0 bg-black opacity-70"></div>
     </div>
     <motion.div 
       className="relative z-10 text-center px-4 max-w-4xl mx-auto"
@@ -24,8 +25,8 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction }) => (
       viewport={{ once: true }}
       variants={fadeInUp}
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">{title}</h2>
-      <p className="text-lg md:text-xl mb-8">{description}</p>
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">{title}</h2>
+      <p className="text-lg md:text-xl mb-8 text-white">{description}</p>
       <Button 
         className={buttonText === "Boka DJ-tjänster" ? "bg-transparent border border-white hover:bg-white hover:text-black" : "bg-white text-black hover:bg-gray-200"}
         onClick={buttonAction}
