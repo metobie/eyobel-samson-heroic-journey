@@ -10,7 +10,7 @@ const fadeInUp = {
 
 const Hero = ({ imageSrc, title, description, buttonText, buttonAction }) => (
   <section className="relative h-screen flex items-center justify-center">
-    <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/60">
+    <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-black/80">
       <img 
         src={imageSrc} 
         alt={title} 
