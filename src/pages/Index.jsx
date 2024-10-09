@@ -20,18 +20,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Innehållssektion med ny bakgrundsbild */}
-      <section className="relative py-16 px-4">
+      {/* Andra hero-sektionen: Tackla Dina Drömmar */}
+      <section className="relative h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30">
           <img 
             src="https://i.imgur.com/P3WBicv.jpeg" 
-            alt="Bakgrund" 
+            alt="Tackla Dina Drömmar" 
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Tackla Dina Drömmar</h2>
-          <p className="text-lg mb-8 bg-black/50 p-4 rounded">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Tackla Dina Drömmar</h2>
+          <p className="text-lg md:text-xl mb-8 bg-black/50 p-4 rounded">
             Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare 
             som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av 
             musik och motivation, guidar Eyobel dig genom resan att övervinna hinder och nå dina mål.
