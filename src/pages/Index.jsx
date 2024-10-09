@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { Phone, Mail } from 'lucide-react';
