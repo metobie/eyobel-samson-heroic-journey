@@ -152,7 +152,11 @@ Med vänliga hälsningar,
           buttonAction={() => scrollToHero(secondHeroRef)}
           isFirst={true}
         />
-        <ScrollArrow direction="down" onClick={() => scrollToHero(secondHeroRef)} />
+        <ScrollArrow 
+          direction="down" 
+          onClick={() => scrollToHero(secondHeroRef)} 
+          mobilePosition="mb-20 sm:mb-8" // Adjust bottom margin for mobile
+        />
       </div>
 
       <div ref={secondHeroRef} className="relative">
@@ -164,7 +168,11 @@ Med vänliga hälsningar,
           buttonAction={bookLecture}
         />
         <ScrollArrow direction="up" onClick={() => scrollToHero(firstHeroRef)} className="top-4" />
-        <ScrollArrow direction="down" onClick={() => scrollToHero(thirdHeroRef)} />
+        <ScrollArrow 
+          direction="down" 
+          onClick={() => scrollToHero(thirdHeroRef)}
+          mobilePosition="mb-20 sm:mb-8" // Adjust bottom margin for mobile
+        />
       </div>
 
       <div ref={thirdHeroRef} className="relative">
