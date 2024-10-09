@@ -164,7 +164,7 @@ Med vänliga hälsningar,
         <ScrollArrow direction="down" onClick={scrollToThirdHero} />
       </div>
 
-      <div ref={thirdHeroRef}>
+      <div ref={thirdHeroRef} className="relative">
         <Hero 
           imageSrc="https://i.imgur.com/etmrGsZ.png"
           title="Upplev Musiken"
@@ -173,6 +173,7 @@ Med vänliga hälsningar,
           buttonAction={bookDJServices}
           delay={true}
         />
+        <ScrollArrow direction="up" onClick={scrollToSecondHero} />
       </div>
 
       <Footer />
