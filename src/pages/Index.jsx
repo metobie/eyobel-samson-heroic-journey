@@ -165,12 +165,8 @@ Med vänliga hälsningar,
           buttonAction={bookLecture}
           delay={true}
         />
-        {currentHero === 1 && (
-          <>
-            <ScrollArrow direction="up" onClick={() => scrollToHero(0)} />
-            <ScrollArrow direction="down" onClick={() => scrollToHero(2)} />
-          </>
-        )}
+        <ScrollArrow direction="up" onClick={() => scrollToHero(0)} />
+        <ScrollArrow direction="down" onClick={() => scrollToHero(2)} />
       </div>
 
       <div ref={heroRefs[2]}>
