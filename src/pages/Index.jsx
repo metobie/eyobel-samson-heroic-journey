@@ -94,9 +94,18 @@ const Footer = () => (
 
 const Index = () => {
   const secondHeroRef = useRef(null);
+  const thirdHeroRef = useRef(null);
+
+  const scrollToFirstHero = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const scrollToSecondHero = () => {
     secondHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToThirdHero = () => {
+    thirdHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const createEmailLink = (subject, body) => {
@@ -142,7 +151,7 @@ Med vänliga hälsningar,
         onScrollDown={scrollToSecondHero}
       />
 
-      <div ref={secondHeroRef}>
+      <div ref={secondHeroRef} className="relative">
         <Hero 
           imageSrc="https://i.imgur.com/P3WBicv.jpeg"
           title="Tackla Dina Drömmar"
@@ -151,16 +160,20 @@ Med vänliga hälsningar,
           buttonAction={bookLecture}
           delay={true}
         />
+        <ScrollArrow direction="up" onClick={scrollToFirstHero} />
+        <ScrollArrow direction="down" onClick={scrollToThirdHero} />
       </div>
 
-      <Hero 
-        imageSrc="https://i.imgur.com/etmrGsZ.png"
-        title="Upplev Musiken"
-        description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
-        buttonText="Boka DJ-tjänster"
-        buttonAction={bookDJServices}
-        delay={true}
-      />
+      <div ref={thirdHeroRef}>
+        <Hero 
+          imageSrc="https://i.imgur.com/etmrGsZ.png"
+          title="Upplev Musiken"
+          description="Som erfaren DJ skapar Eyobel Samson oförglömliga upplevelser genom att blanda olika musikstilar och skapa den perfekta atmosfären för varje event. Från intima klubbkvällar till stora festivaler, Eyobel levererar alltid en energifylld och medryckande musikupplevelse."
+          buttonText="Boka DJ-tjänster"
+          buttonAction={bookDJServices}
+          delay={true}
+        />
+      </div>
 
       <Footer />
     </div>
