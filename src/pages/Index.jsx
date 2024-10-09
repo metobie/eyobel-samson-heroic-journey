@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 
@@ -42,6 +42,12 @@ const Hero = ({ imageSrc, title, description, buttonText, buttonAction, logoSrc 
 );
 
 const Index = () => {
+  const secondHeroRef = useRef(null);
+
+  const scrollToSecondHero = () => {
+    secondHeroRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Hero 
@@ -49,16 +55,18 @@ const Index = () => {
         logoSrc="https://i.imgur.com/0LHKV77.png"
         description="DJ och Inspirerande Föreläsare"
         buttonText="Lär känna mig"
-        buttonAction={() => console.log('Lär känna mig clicked')}
+        buttonAction={scrollToSecondHero}
       />
 
-      <Hero 
-        imageSrc="https://i.imgur.com/P3WBicv.jpeg"
-        title="Tackla Dina Drömmar"
-        description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att övervinna hinder och nå dina mål."
-        buttonText="Boka föreläsning"
-        buttonAction={() => console.log('Boka föreläsning clicked')}
-      />
+      <div ref={secondHeroRef}>
+        <Hero 
+          imageSrc="https://i.imgur.com/P3WBicv.jpeg"
+          title="Tackla Dina Drömmar"
+          description="Eyobel Samson är inte bara en talangfull DJ, utan också en inspirerande föreläsare som hjälper människor att förverkliga sina drömmar. Med sin unika kombination av musik och motivation, guidar Eyobel dig genom resan att övervinna hinder och nå dina mål."
+          buttonText="Boka föreläsning"
+          buttonAction={() => console.log('Boka föreläsning clicked')}
+        />
+      </div>
 
       <Hero 
         imageSrc="https://i.imgur.com/etmrGsZ.png"
